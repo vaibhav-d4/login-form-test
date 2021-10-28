@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable no-unused-vars */
+import logo from "./logo.svg";
+import "./App.css";
+import Loginform from "./components/Loginform";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Register from "./components/Register";
+import Home from "./components/Home";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <div className="navbar">
+                <div
+                    className="links"
+                    style={{ padding: "20px", paddingBottom: "40px" }}
+                >
+                    <a href="/">Home</a> &nbsp; &nbsp;
+                    <a href="/login">Login</a>&nbsp; &nbsp;
+                    <a href="/register">Register</a>&nbsp; &nbsp;
+                </div>
+            </div>
+            <Router>
+                <Route path="/" exact render={(props) => <Home />} />
+                <Route path="/login" render={(props) => <Loginform />} />
+                <Route path="/register" render={(props) => <Register />} />
+            </Router>
+        </div>
+    );
 }
 
 export default App;
